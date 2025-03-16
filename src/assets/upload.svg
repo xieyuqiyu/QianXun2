@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="140"
+                viewBox="0 0 366 289">
+                <defs>
+                    <clipPath id="clipPath8480209991">
+                        <path transform="matrix(1 0 0 1 0 0)" d="M0 0L366 0L366 289L0 289L0 0Z" fill-rule="nonzero" />
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#clipPath8480209991)">
+                    <defs>
+                        <filter id="filter8091364528" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feComponentTransfer in="SourceAlpha" result="componentTransfer1821885622">
+                                <feFuncR type="linear" slope="0" intercept="0" />
+                                <feFuncG type="linear" slope="0" intercept="0" />
+                                <feFuncB type="linear" slope="0" intercept="0" />
+                                <feFuncA type="linear" slope="10000" intercept="0" />
+                            </feComponentTransfer>
+                            <feComponentTransfer in="componentTransfer1821885622" result="componentTransfer2075965840">
+                                <feFuncA type="linear" slope="0.2" intercept="0" />
+                            </feComponentTransfer>
+                            <feOffset dx="0" dy="4" in="componentTransfer2075965840" result="offset1366578513" />
+                            <feGaussianBlur stdDeviation="2" in="offset1366578513" result="gaussianBlur3221214953" />
+                            <feMerge>
+                                <feMergeNode in="gaussianBlur3221214953" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g filter="url(#filter8091364528)">
+                        <path transform="matrix(1 0 0 1 97 132)"
+                            d="M11 0C4.92487 0 0 4.92487 0 11L0 11.0165C0 17.0916 4.92487 22 11 22L162 22C168.075 22 173 17.0916 173 11.0165L173 11C173 4.92487 168.075 0 162 0L11 0Z"
+                            fill-rule="nonzero" fill="rgb(74, 123, 255)" />
+                    </g>
+                    <defs>
+                        <filter id="filter8236193694" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feComponentTransfer in="SourceAlpha" result="componentTransfer5477763477">
+                                <feFuncR type="linear" slope="0" intercept="0" />
+                                <feFuncG type="linear" slope="0" intercept="0" />
+                                <feFuncB type="linear" slope="0" intercept="0" />
+                                <feFuncA type="linear" slope="10000" intercept="0" />
+                            </feComponentTransfer>
+                            <feComponentTransfer in="componentTransfer5477763477" result="componentTransfer9645829441">
+                                <feFuncA type="linear" slope="0.2" intercept="0" />
+                            </feComponentTransfer>
+                            <feOffset dx="0" dy="4" in="componentTransfer9645829441" result="offset6023733606" />
+                            <feGaussianBlur stdDeviation="2" in="offset6023733606" result="gaussianBlur1719510376" />
+                            <feMerge>
+                                <feMergeNode in="gaussianBlur1719510376" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g filter="url(#filter8236193694)">
+                        <path transform="matrix(-4.37688e-08 1 -1 -4.45074e-08 194.485 57.1044)"
+                            d="M11 0C4.92487 0 0 4.92487 0 11L0 11.0165C0 17.0916 4.92487 22 11 22L162 22C168.075 22 173 17.0916 173 11.0165L173 11C173 4.92487 168.075 0 162 0L11 0Z"
+                            fill-rule="nonzero" fill="rgb(74, 123, 255)" />
+                    </g>
+                </g>
+            </svg>
