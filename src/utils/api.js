@@ -1,18 +1,8 @@
 // API请求封装
+import { getApiBaseUrl } from './env';
 
-// 根据环境确定基础URL
-const getBaseUrl = () => {
-  if (process.env.NODE_ENV === 'production') {
-    // 生产环境API地址
-    return 'http://192.168.1.100:3009';
-  } else {
-    // 开发环境使用代理
-    return 'http://localhost:3009';
-  }
-};
-
-// 基础URL
-const baseURL = getBaseUrl();
+// 获取基础URL
+const baseURL = getApiBaseUrl();
 
 /**
  * 封装GET请求
@@ -80,6 +70,35 @@ export const post = async (url, data = {}) => {
     throw error;
   }
 };
+// ... 现有代码 ...
+
+/**
+ * 封装DELETE请求
+ * @param {string} url - 请求路径
+ * @returns {Promise} - 返回Promise对象
+ */
+export const del = async (url) => {
+  try {
+    // 发送请求
+    const response = await fetch(`${baseURL}${url}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    // 检查响应状态
+    if (!response.ok) {
+      throw new Error(`删除失败: ${response.status}`);
+    }
+    
+    // 解析响应数据
+    return await response.json();
+  } catch (error) {
+    console.error('DELETE请求出错:', error);
+    throw error;
+  }
+};
 
 /**
  * 封装文件上传请求
@@ -120,7 +139,7 @@ export const getImageUrl = (path) => {
   }
   
   // 否则拼接基础URL和路径
-  return `${getBaseUrl()}${path}`;
+  return `${baseURL}${path}`;
 };
 
 /**

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="139" height="81" viewBox="0 0 139 81">
+	<defs>
+		<filter id="filter6141424309" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feComponentTransfer in="SourceAlpha" result="componentTransfer9563526772">
+				<feFuncR type="linear" slope="0" intercept="0"/>
+				<feFuncG type="linear" slope="0" intercept="0"/>
+				<feFuncB type="linear" slope="0" intercept="0"/>
+				<feFuncA type="linear" slope="10000" intercept="0"/>
+			</feComponentTransfer>
+			<feComponentTransfer in="componentTransfer9563526772" result="componentTransfer4468663190">
+				<feFuncA type="linear" slope="0.2" intercept="0"/>
+			</feComponentTransfer>
+			<feOffset dx="0" dy="4" in="componentTransfer4468663190" result="offset9613543028"/>
+			<feGaussianBlur stdDeviation="2" in="offset9613543028" result="gaussianBlur8775702005"/>
+			<feComponentTransfer in="SourceAlpha" result="componentTransfer3030399129">
+				<feFuncR type="linear" slope="0" intercept="0"/>
+				<feFuncG type="linear" slope="0" intercept="0"/>
+				<feFuncB type="linear" slope="0" intercept="0"/>
+				<feFuncA type="linear" slope="10000" intercept="0"/>
+			</feComponentTransfer>
+			<feComponentTransfer in="componentTransfer3030399129" result="componentTransfer0677950218">
+				<feFuncA type="linear" slope="0.2" intercept="0"/>
+			</feComponentTransfer>
+			<feOffset dx="0" dy="4" in="componentTransfer0677950218" result="offset9628920800"/>
+			<feGaussianBlur stdDeviation="2" in="offset9628920800" result="gaussianBlur0309551353"/>
+			<feMerge>
+				<feMergeNode in="gaussianBlur8775702005"/>
+				<feMergeNode in="gaussianBlur0309551353"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter>
+	</defs>
+	<g filter="url(#filter6141424309)">
+		<path transform="matrix(1 0 0 1 10 10)" d="M13.5 0L12 1L11 2L10.5 2L11 5L12 7L13.5 8L16 7.5L18 6L18 2L17 1L16 0L15 0L13.5 0ZM24 1L22 2L22 6L24 7L45 7L46.5 8L46.5 55.5L49.5 57L52.5 57L54 55L54 6.5L54 5L52.5 3L51 1L24 1ZM5 2L2 2C0.768695 2.18289 0.541756 2.70009 0 3.5L0 55L1 56L2 57L5.5 57L7 55L7 4L6 3L5 2ZM26 11L24 12.5L24 18L12 18L11 20.5L11.5 23L13.5 25L24 25.5L24 55L26 57L28.5 57L30.5 55.5L30.5 25L41 25L43.5 23.5L43.5 20L42 18L30.5 18L30.5 12.5L28.5 11L26 11ZM40 30.5L37.5 30.5L35 33L35 55L37 57L40 57L42 55L42 33L40 30.5ZM17 30.5L13.5 30.5L12 33L12 55.5L14 57L17 57L18.5 55L18.5 33L17 30.5Z" fill-rule="nonzero" fill="rgb(250, 227, 32)"/>
+	</g>
+	<defs>
+		<filter id="filter4103317985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feComponentTransfer in="SourceAlpha" result="componentTransfer8092267291">
+				<feFuncR type="linear" slope="0" intercept="0"/>
+				<feFuncG type="linear" slope="0" intercept="0"/>
+				<feFuncB type="linear" slope="0" intercept="0"/>
+				<feFuncA type="linear" slope="10000" intercept="0"/>
+			</feComponentTransfer>
+			<feComponentTransfer in="componentTransfer8092267291" result="componentTransfer7061722923">
+				<feFuncA type="linear" slope="0.2" intercept="0"/>
+			</feComponentTransfer>
+			<feOffset dx="0" dy="4" in="componentTransfer7061722923" result="offset7111204020"/>
+			<feGaussianBlur stdDeviation="2" in="offset7111204020" result="gaussianBlur5495936775"/>
+			<feMerge>
+				<feMergeNode in="gaussianBlur5495936775"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter>
+	</defs>
+	<g filter="url(#filter4103317985)">
+		<path transform="matrix(1 0 0 1 74 10)" d="M3.5 0L0 2.5L0 9.5L1 10.5L5 10.5L7 6.5L46 6.5L48 10.5L51.5 10.5L53 8.5L53 2.5L50.5 0.5L3.5 0ZM0 16.5L2 14.5L51 14.5L53 16.5L53 41.5L51 43L2 43L0 41.5L0 16.5ZM6 48.5L5 49.5L2.5 49.5L0.5 50.5L0 50.5L0 54.5L0.5 56L5 56L8.5 54.5L20.5 54.5L25 55.5L29 56L32 57.5L44 57.5L49 56.5L54 54.5L54 50.5L53 49.5L49 50.5L29.5 50L25.5 48.5L6 48.5Z" fill-rule="evenodd" fill="rgb(250, 227, 32)"/>
+	</g>
+</svg>
