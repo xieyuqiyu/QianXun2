@@ -49,6 +49,15 @@ import DouYin from '../assets/DouYin.svg';
 import ZhiHu from '../assets/ZhiHu.svg';
 import PinDD from '../assets/PinDD.svg';
 import Bilibili from '../assets/BiliBili.svg';
+import Xianyu from '../assets/Xianyu.svg';
+import Taobao from '../assets/Taobao1.svg';
+import Jingdong from '../assets/Jingdong.svg';
+import TapTap from '../assets/TapTap.svg';
+import Netflix from '../assets/Netflix.svg';
+import Qidian from '../assets/Qidian.svg';
+import Miaoduo from '../assets/Miaoduo.svg';
+import TencentDocs from '../assets/TencentDocs.svg';
+import Coze from '../assets/Coze.svg';
 import { get, post, upload, del, getImageUrl, formatUrl } from '../utils/api';
 
 
@@ -153,7 +162,7 @@ const handleFileUpload = async (event) => {
         console.log('上传成功:', result);
 
         // 保存上传的图片URL到表单数据
-        newCard.value.logo = result.file.path;
+        newCard.value.logo = result.data.path;
         window.$message.success('上传成功')
 
     } catch (error) {
@@ -182,7 +191,7 @@ const fetchNavigations = async () => {
         console.log('获取导航站点成功:', data);
 
         // 将API返回的数据转换为cards数组格式
-        cards.value = data.map(item => ({
+        cards.value = data?.data.map(item => ({
             id: item.id,
             img: item.logo,
             title: item.name,
@@ -195,57 +204,121 @@ const fetchNavigations = async () => {
 };
 
 const cards = ref([
-    {
-        id: 1,
-        img: Google,
-        title: '谷歌',
-        desc: '搜索引擎',
-        url: 'https://www.google.com'
-    },
-    {
-        id: 2,
-        img: GitHub,
-        title: 'GitHub',
-        desc: '代码托管',
-        url: 'https://www.github.com'
-    },
-    {
-        id: 3,
-        img: Email,
-        title: '网易邮箱',
-        desc: '163邮箱',
-        url: 'https://mail.163.com'
-    },
-    {
-        id: 4,
-        img: DouYin,
-        title: '抖音',
-        desc: '短视频平台',
-        url: 'https://www.douyin.com'
-    },
+    // {
+    //     id: 1,
+    //     img: Google,
+    //     title: '谷歌',
+    //     desc: '搜索引擎',
+    //     url: 'https://www.google.com'
+    // },
+    // {
+    //     id: 2,
+    //     img: GitHub,
+    //     title: 'GitHub',
+    //     desc: '代码托管',
+    //     url: 'https://www.github.com'
+    // },
+    // {
+    //     id: 3,
+    //     img: Email,
+    //     title: '网易邮箱',
+    //     desc: '163邮箱',
+    //     url: 'https://mail.163.com'
+    // },
+    // {
+    //     id: 4,
+    //     img: DouYin,
+    //     title: '抖音',
+    //     desc: '短视频平台',
+    //     url: 'https://www.douyin.com'
+    // },
 
-    {
-        id: 6,
-        img: ZhiHu,
-        title: '知乎',
-        desc: '知识分享社区',
-        url: 'https://www.zhihu.com'
-    },
-    {
-        id: 7,
-        img: PinDD,
-        title: '拼多多',
-        desc: '电商平台',
-        url: 'https://www.pinduoduo.com'
+    // {
+    //     id: 6,
+    //     img: ZhiHu,
+    //     title: '知乎',
+    //     desc: '知识分享社区',
+    //     url: 'https://www.zhihu.com'
+    // },
+    // {
+    //     id: 7,
+    //     img: PinDD,
+    //     title: '拼多多',
+    //     desc: '电商平台',
+    //     url: 'https://www.pinduoduo.com'
 
-    },
-    {
-        id: 8,
-        img: Bilibili,
-        title: '哔哩哔哩',
-        desc: '弹幕视频网站',
-        url: 'https://www.bilibili.com'
-    }
+    // },
+    // {
+    //     id: 8,
+    //     img: Bilibili,
+    //     title: '哔哩哔哩',
+    //     desc: '弹幕视频网站',
+    //     url: 'https://www.bilibili.com'
+    // },
+    // {
+    //     id: 9,
+    //     img: Xianyu,
+    //     title: '闲鱼',
+    //     desc: '江湖人称咸鱼',
+    //     url: 'https://www.goofish.com/'
+    // },
+    // {
+    //     id: 10,
+    //     img: Taobao,
+    //     title: '淘宝',
+    //     desc: '买买买',
+    //     url: 'taobao.com'
+    // },
+    // {
+    //     id: 11,
+    //     img: Jingdong,
+    //     title: '京东',
+    //     desc: '买买买',
+    //     url: 'jd.com'
+    // },
+    // {
+    //     id: 12,
+    //     img: TapTap,
+    //     title: 'TapTap',
+    //     desc: '攻略站',
+    //     url: 'https://www.taptap.cn/app/733083/strategy'
+    // },
+    // {
+    //     id: 13,
+    //     img: Netflix,
+    //     title: '奈飞',
+    //     desc: '看电视',
+    //     url: 'https://www.netflix.com/'
+    // },
+    // {
+    //     id: 14,
+    //     img: Qidian,
+    //     title: '起点',
+    //     desc: '看小说',
+    //     url: 'https://www.qidian.com/'
+    // },
+    // {
+    //     id: 15,
+    //     img: Miaoduo,
+    //     title: '妙多',
+    //     desc: '我的设计师工具',
+    //     url: 'https://www.miaoduo.com/'
+    // },
+    // {
+    //     id: 16,
+    //     img: TencentDocs,
+    //     title: '腾讯文档',
+    //     desc: '写文档的地方',
+    //     url: 'https://docs.qq.com/'
+    // },
+    // {
+    //     id: 17,
+    //     img: Coze,
+    //     title: '扣子',
+    //     desc: '搭建工作流网站',
+    //     url: 'https://www.coze.cn/'
+    // }
+    
 
 
 

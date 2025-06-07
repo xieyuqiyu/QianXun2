@@ -4,6 +4,7 @@ import App from './App.vue'
 import Message from './utils/message'
 import { getAppTitle } from './utils/env'
 
+
 // 设置文档标题
 document.title = getAppTitle()
 

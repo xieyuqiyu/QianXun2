@@ -4,21 +4,14 @@
     <header class="logo">
         <div>
 
-            <span class="nav">Navbar+</span>
+            <span class="nav">千寻</span>
         </div>
 
         <div class="temperature">
-            <span style="display: flex;justify-content: center;align-items: center;">
-                <img :src="templete" />
-            </span>
 
-            <span class="temperature1">
-                <!-- 获取当前地区的温度 -->
-                <span v-text="temperature"></span>
-            </span>
             <span class="temperature2">
                 <!-- 获取当前的时间 只需要时分 -->
-                <span v-text="new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })"></span>
+                <span v-text="currentTime"></span>
             </span>
 
 
@@ -30,26 +23,24 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import templete from '../assets/templete.svg'
 
-const temperature = ref('加载中...')
-const currentTime = ref(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+const currentTime = ref(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }))
 
 const updateTime = () => {
-    currentTime.value = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    currentTime.value = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
 }
+let interval; // 声明变量以便在组件卸载时清除
 
-onMounted(async () => {
-    try {
-        const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=YOUR_CITY&appid=YOUR_API_KEY&units=metric')
-        const data = await response.json()
-        temperature.value = `${data.main.temp}°C`
-    } catch (error) {
-        temperature.value = '无法获取温度'
-    }
+onMounted(() => {
+    // 初始更新一次时间
+    updateTime();
+    // 设置定时器，每秒更新一次时间
+    interval = setInterval(updateTime, 1000);
+})
 
-    const interval = setInterval(updateTime, 60000) // 每分钟更新一次时间
-    onUnmounted(() => clearInterval(interval))
+// 正确放置 onUnmounted 钩子
+onUnmounted(() => {
+    clearInterval(interval);
 })
 </script>
 
