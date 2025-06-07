@@ -70,7 +70,37 @@ export const post = async (url, data = {}) => {
     throw error;
   }
 };
-// ... 现有代码 ...
+/**
+ * 封装PUT请求
+ * @param {string} url - 请求路径
+ * @param {Object} data - 请求数据
+ * @returns {Promise} - 返回Promise对象
+ */
+export const put = async (url, data = {}) => {
+  try {
+    // 发送请求
+    const response = await fetch(`${baseURL}${url}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    // 检查响应状态
+    if (!response.ok) {
+      throw new Error(`更新失败: ${response.status}`);
+    }
+    
+    // 解析响应数据
+    return await response.json();
+  } catch (error) {
+    console.error('PUT请求出错:', error);
+    throw error;
+  }
+};
+
+
 
 /**
  * 封装DELETE请求

@@ -1,15 +1,6 @@
 <template>
     <div class="card-container">
-        <a v-for="card in cards" :key="card.id" :href="formatUrl(card.url)" target="_blank" class="card">
-            <!-- 添加删除按钮 -->
-            <div class="delete-btn" @click.stop.prevent="confirmDelete(card.id)">×</div>
-            <img :src="getImageUrl(card.img)" alt="card image" class="card-image" />
-            <div class="card-body">
-                <h3 class="card-title">{{ card.title }}</h3>
-                <p class="card-desc">{{ card.desc }}</p>
-            </div>
-        </a>
-        <div class="card add-card">
+         <div class="card add-card">
 
             <div class="add-card-form">
                 <div class="form-group">
@@ -32,33 +23,28 @@
                     <input type="file" ref="fileInput" style="display: none;" @change="handleFileUpload" accept="image/*" />
                     
                     <button class="submit-btn" @click="submitForm">
-                        <span>添加</span>
+                        <span>{{ isEdit?'更新':'添加' }}</span>
                     </button>
                 </div>
             </div>
         </div>
+        <a v-for="card in cards" :key="card.id" :href="formatUrl(card.url)" target="_blank" class="card">
+            <!-- 添加删除按钮 -->
+            <div class="delete-btn" style="right: 40px;" @click.stop.prevent="editInfo(card)">/</div>
+            <div class="delete-btn" @click.stop.prevent="confirmDelete(card.id)">X</div>
+            <img :src="getImageUrl(card.img)" alt="card image" class="card-image" />
+            <div class="card-body">
+                <h3 class="card-title">{{ card.title }}</h3>
+                <p class="card-desc">{{ card.desc }}</p>
+            </div>
+        </a>
+       
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import Google from '../assets/Google.svg';
-import GitHub from '../assets/GitHub.svg';
-import Email from '../assets/Email.svg';
-import DouYin from '../assets/DouYin.svg';
-import ZhiHu from '../assets/ZhiHu.svg';
-import PinDD from '../assets/PinDD.svg';
-import Bilibili from '../assets/BiliBili.svg';
-import Xianyu from '../assets/Xianyu.svg';
-import Taobao from '../assets/Taobao1.svg';
-import Jingdong from '../assets/Jingdong.svg';
-import TapTap from '../assets/TapTap.svg';
-import Netflix from '../assets/Netflix.svg';
-import Qidian from '../assets/Qidian.svg';
-import Miaoduo from '../assets/Miaoduo.svg';
-import TencentDocs from '../assets/TencentDocs.svg';
-import Coze from '../assets/Coze.svg';
-import { get, post, upload, del, getImageUrl, formatUrl } from '../utils/api';
+import { get, post, upload, del, getImageUrl, formatUrl,put } from '../utils/api';
 
 
 
@@ -70,7 +56,21 @@ const newCard = ref({
     url: '',
     logo: ''
 });
+// 用于提交状态
+const isEdit = ref(false);
 const isSubmitting = ref(false);
+const editInfo = (card) => {
+    // 这里可以实现编辑功能
+    // 例如，打开一个模态框，填充当前卡片信息
+    isEdit.value = true;
+    console.log('编辑卡片:', card);
+    newCard.value.name = card.title;
+    newCard.value.description = card.desc;
+    newCard.value.url = card.url;
+    newCard.value.logo = card.img;
+    newCard.value.id = card.id; // 保存卡片ID以便更新
+
+};
 
 // 确认删除
 const confirmDelete = (id) => {
@@ -121,6 +121,7 @@ const submitForm = async () => {
     }
 
     try {
+
         isSubmitting.value = true;
 
         // 创建要提交的数据
@@ -132,10 +133,21 @@ const submitForm = async () => {
         };
 
         // 发送请求到服务器
-        const result = await post('/api/navigation', cardData);
-        console.log('卡片添加成功:', result);
-        fetchNavigations();
-        window.$message.success('卡片添加成功')
+        if (isEdit.value) {
+            // 如果是编辑状态，发送PUT请求
+            const result = await put(`/api/navigation/${newCard.value.id}`, cardData);
+            console.log('卡片更新成功:', result);
+            window.$message.success('卡片更新成功')
+            // 更新本地卡片数据
+            fetchNavigations(); // 重新获取导航站点列表
+            isEdit.value = false; // 重置编辑状态
+        } else {
+            // 否则发送POST请求
+            const result = await post('/api/navigation', cardData);
+            console.log('卡片添加成功:', result);
+            window.$message.success('卡片添加成功')
+            fetchNavigations(); // 重新获取导航站点列表
+        }
 
     } catch (error) {
         console.error('提交出错:', error);
@@ -405,7 +417,7 @@ const cards = ref([
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 14px;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease, background-color 0.3s ease;
